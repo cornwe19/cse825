@@ -17,4 +17,4 @@ test: test.c
 	execstack -s test
 
 clean:
-	rm -f bof test shellspawn 
+	rm -f bof test shellspawn *.o
