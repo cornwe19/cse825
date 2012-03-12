@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{A24078F4-920E-48F0-B0A0-F41AF5491B1F}</ProjectGuid>
+    <ProjectGuid>{B2789393-098D-4FB7-9C6C-E71404B40B24}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>BufferOverflow</RootNamespace>
+    <RootNamespace>vulnerable</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -76,12 +76,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BufferOverflow.cpp" />
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="vulnerable.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

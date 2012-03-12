@@ -14,8 +14,6 @@
 
 using namespace std;
 
-/* THIS CODE WORKS
-
 void function(int a, int b, int c) {
 	char buffer[8];
 	long *address_of_return;
@@ -48,23 +46,6 @@ int main() {
 	printf("after x = 1\n");
 	printf("x = %d\n", x);
 	printf("leaving main\n");
-
-	return 0;
-}*/
-
-void GetInput(char *filename)
-{
-	char buffer[324];
-	ifstream file(filename);
-	cout << sizeof(filename) << endl;
-	file >> buffer;
-}
-
-int main(int argc, char **argv)
-{
-	GetInput(argv[1]);
-
-	cout << "Didn't break" << endl;
 
 	return 0;
 }
