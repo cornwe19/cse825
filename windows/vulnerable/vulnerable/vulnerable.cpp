@@ -5,6 +5,7 @@
 
 #include<cstdlib>
 #include<iostream>
+#include<stdio.h>
 
 using namespace std;
 
@@ -18,11 +19,10 @@ int main(int argc, char *argv[])
 	
 	//TODO: Get return address on the end of the shellcode
 	//TODO: Use shellcode for adding administrator
-
 	char buffer[64];
 
-	//strcpy(buffer, argv[1]);
-	gets(buffer);
+	strcpy(buffer, argv[1]);
+	//gets(buffer);
 
 	*(int *) &buffer[sizeof(buffer)] = (int) &buffer;
 	*(int *) &buffer[sizeof(buffer)+4] = (int) &buffer;
