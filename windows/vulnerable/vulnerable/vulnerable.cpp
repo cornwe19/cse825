@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
 		
 	cout << hex << &buffer << endl;
 	cout << hex << get_ret() << endl;
-	//cout << hex << get_val() << endl;
+	cout << hex << get_val() << endl;
 	cout << "Bool: " << ((int) &buffer == get_ret()) << endl;
 	cout << "After strcopy..." << endl;
 	
