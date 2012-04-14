@@ -5,8 +5,26 @@
 
 #include<cstdlib>
 #include<iostream>
+#include<stdio.h>
 
 using namespace std;
+
+int get_ret()
+{
+	__asm{
+		mov eax, [ebp]
+		mov eax, [eax+4]
+	}
+}
+
+int get_val()
+{
+	__asm{
+		mov eax, [ebp]
+		mov eax, [eax+4]
+		mov eax, [eax]
+	}
+}
 
 int main(int argc, char *argv[])
 {	
@@ -18,18 +36,21 @@ int main(int argc, char *argv[])
 	
 	//TODO: Get return address on the end of the shellcode
 	//TODO: Use shellcode for adding administrator
-
 	char buffer[64];
 
-	//strcpy(buffer, argv[1]);
-	gets(buffer);
+	strcpy(buffer, argv[1]);
+	//gets(buffer);
 
-	*(int *) &buffer[sizeof(buffer)] = (int) &buffer;
-	*(int *) &buffer[sizeof(buffer)+4] = (int) &buffer;
-	*(int *) &buffer[sizeof(buffer)+8] = (int) &buffer;
-	*(int *) &buffer[sizeof(buffer)+12] = (int) &buffer;
-	*(int *) &buffer[sizeof(buffer)+16] = (int) &buffer;
-
+	//*(int *) &buffer[sizeof(buffer)] = (int) &buffer;
+	//*(int *) &buffer[sizeof(buffer)+4] = (int) &buffer;
+	//*(int *) &buffer[sizeof(buffer)+8] = (int) &buffer;
+	//*(int *) &buffer[sizeof(buffer)+12] = (int) &buffer;
+	//*(int *) &buffer[sizeof(buffer)+16] = (int) &buffer;
+		
+	cout << hex << &buffer << endl;
+	cout << hex << get_ret() << endl;
+	cout << hex << get_val() << endl;
+	cout << "Bool: " << ((int) &buffer == get_ret()) << endl;
 	cout << "After strcopy..." << endl;
 	
 	return 0;
