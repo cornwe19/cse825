@@ -1,0 +1,23 @@
+Check out the (potentially) vulnerable program
+	Fuzz it - Throw some input at it
+	See where the threshold is that it starts exploding
+	Check out the stack in Ollydbg when it explodes
+		Find the address where your input starts
+
+Check out the assembly we've got
+	Run "arwin kernel32.dll WinExec"
+	Run "arwin kernel32.dll ExitProcess"
+	Replace the addresses in the assembly with the addresses you just got
+	Run "nasm -f elf -o shellcode.nasm shellcode.asm
+	Run "objdump -d shellcode.nasm"
+	Copy the the byte code into a file so you can store it - \x style
+	Add NOPs to pad the ends of it to fill the buffer up - Make sure you're on 4 byte boundaries
+	Run a "perl -e "print \"bytecode"" > file"
+	
+Set up your exploitable program
+	Set up a buffer
+	gets into the buffer
+	Throw the return address onto the end of the buffer so it can jump back up and run
+	Execve the vulnerable program and pass in the buffer
+	
+Profit!
