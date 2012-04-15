@@ -11,7 +11,7 @@
 #define LOCAL_HOST "127.0.0.1"
 
 struct unicast_pkt {
-  char data[400];
+  char data[1000];
 };
 
 #endif

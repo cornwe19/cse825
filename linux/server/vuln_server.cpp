@@ -32,9 +32,21 @@ int main( int argc, char** argv )
    return 0;
 }
 
+unsigned long getEbp()
+{
+   __asm__(
+	"movl (%ebp),%eax\n\t"\
+	"movl 4(%eax),%eax\n\t"
+   );
+}
+
 void OnServerMessage( int socket, unicast_pkt data, sockaddr_in sender, struct timeval** timeout )
 {
-   cout << OUTPUT_PREFIX << "received message: " << data.data << " from host" << endl;
+   char buf[100];
+   (strcpy)( buf, data.data );
+//   cout << OUTPUT_PREFIX << "received message: " << data.data << " from host" << endl;
+
+   cout << OUTPUT_PREFIX << "ebp is: " << hex << getEbp() << endl;
 }
 
 void OnConsoleMessage( const char* message, bool* shouldExit )

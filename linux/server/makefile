@@ -5,7 +5,8 @@ socket_utils: socket_utils.cpp socket_utils.h
 	g++ -c socket_utils.cpp -o bin/socket_utils.o
 
 server: vuln_server.cpp socket_utils.o
-	g++ -Wall vuln_server.cpp bin/socket_utils.o -o bin/server
+	g++ -Wall -ggdb -fno-stack-protector -U_FORTIFY_SOURCE vuln_server.cpp bin/socket_utils.o -o bin/server
+	execstack -s bin/server
 
 client: client.cpp socket_utils.o
 	g++ -Wall client.cpp bin/socket_utils.o -o bin/client
