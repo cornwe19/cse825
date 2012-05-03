@@ -7,17 +7,17 @@
 int bof(FILE *badfile)
 {
 char buffer[12];
-/* The following statement has a buffer overflow problem */
-fread(buffer, sizeof(char), 40, badfile);
-return 1;
+	fread(buffer, sizeof(char), badfile);
+	return 1;
 }
 int main(int argc, char **argv)
 {
-FILE *badfile;
-badfile = fopen("badfile", "r");
-bof(badfile);
-printf("Returned Properly\n");
-fclose(badfile);
-return 1;
+	FILE *badfile;
+	badfile = fopen("badfile", "r");
+	bof(badfile);
+	printf("Returned Properly\n");
+	fclose(badfile);
+	return 1;
 }
 
+//gcc -g --static -Wa,--execstack -o retlib retlib.c
