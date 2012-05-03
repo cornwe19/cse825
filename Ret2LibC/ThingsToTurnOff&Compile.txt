@@ -1,0 +1,9 @@
+echo 0 > /proc/sys/kernel/exec-shield
+echo 0 > /proc/sys/kernel/randomize_va_space
+/sbin/sysctl -w vm.legacy_va_layout=1
+
+
+gcc -g --static -Wa,--execstack -o
+
+x/1s
+
